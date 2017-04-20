@@ -1,5 +1,4 @@
 const ndx = require('../build/Release/Node_NDX');
-var PNG = require('png-js');
 var wm_windows = [];
 var canvas = document.createElement('canvas');
 var ctx=canvas.getContext("2d");
