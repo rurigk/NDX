@@ -16,4 +16,6 @@ Use node-gyp or nw-gyp to compile to node
    
 Use #include "include/ndx.h" to include in c++   
    
-PD:May not work in Qt
+PD:May not work in Qt   
+   
+NodeJs module tested in nwjs v0.21.3
