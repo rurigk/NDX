@@ -1,0 +1,17 @@
+{
+  "main": "appdata/index.html",
+  "name": "NDX Test",
+  "single-instance": true,
+  "author": "Rurigk <rurigkdev@gmail.com>",
+  "window": {
+    "title": "NDX Test",
+    "icon": "appdata/cuatica.jpg",
+    "position": "center",
+    "toolbar": false,
+    "frame": false,
+    "width": 1095,
+    "height": 660,
+    "min_width": 920,
+    "min_height": 600
+  }
+}
