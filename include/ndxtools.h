@@ -75,6 +75,7 @@ public:
 	Atom _NET_WM_ICON;
 
 	//char * Get_Window_Property_Data_And_Type (Window _wid,Atom atom, long *length, Atom *type, int *size);
+
 };
 
 #endif // NDXTOOLS_H

@@ -20,6 +20,7 @@ int main()
 		for (int i = 0; i < allowed.size(); i++) {
 			std::cout << (std::string)allowed[i] << std::endl;
 		}
+		Icon imgdata = ndx->GetWindowIcon((Window)windows[i]);
 	}
 	Icon imgdata = ndx->GetWindowIcon((Window)windows[windows.size()-1]);
 	std::cout << "Width: " << imgdata.width << " Height: " << imgdata.height << " Data element size " << imgdata.data.size() << std::endl;

@@ -157,15 +157,15 @@ std::vector <std::string> NDX::GetWindowState(Window _wid){
 	char *an;
 	int status,di;
 	unsigned char *prop_ret = NULL;
-	unsigned long dl;
+	unsigned long dl,nitems;
 	Atom da,prop;
 	status = XGetWindowProperty(NDX_Tools->display, _wid, NDX_Tools->_NET_WM_STATE, 0L, sizeof (Atom), False,
-									XA_ATOM, &da, &di, &dl, &dl, &prop_ret);
+									XA_ATOM, &da, &di, &nitems, &dl, &prop_ret);
 
 	if (status == Success && prop_ret)
 	{
-		int total = sizeof(prop_ret);
-		for (int i = 0; i < total; i++) {
+		//int total = sizeof(prop_ret);
+		for (int i = 0; i < nitems; i++) {
 			prop = ((Atom *)prop_ret)[i];
 			//std::cout << prop << std::endl;
 			unsigned long aid = prop;
@@ -190,15 +190,15 @@ std::vector <std::string> NDX::GetWindowAllowedActions(Window _wid){
 	char *an;
 	int status,di;
 	unsigned char *prop_ret = NULL;
-	unsigned long dl;
+	unsigned long dl,nitems;
 	Atom da,prop;
 	status = XGetWindowProperty(NDX_Tools->display, _wid, NDX_Tools->_NET_WM_ALLOWED_ACTIONS, 0L, sizeof (Atom), False,
-									XA_ATOM, &da, &di, &dl, &dl, &prop_ret);
+									XA_ATOM, &da, &di, &nitems, &dl, &prop_ret);
 
 	if (status == Success && prop_ret)
 	{
-		int total = sizeof(prop_ret);
-		for (int i = 0; i < total; i++) {
+		//int total = sizeof(prop_ret);
+		for (int i = 0; i < nitems; i++) {
 			prop = ((Atom *)prop_ret)[i];
 			//std::cout << prop << std::endl;
 			unsigned long aid = prop;
@@ -255,4 +255,24 @@ Icon NDX::GetWindowIcon(Window _wid){
 		icon.height = 0;
 	}
 	return icon;
+}
+
+std::vector <Atom> NDX::NetSupported(Window _wid){
+	std::vector <Atom> atoms;
+	int status,di;
+	unsigned char *prop_ret = NULL;
+	unsigned long dl;
+	Atom da,prop;
+	status = XGetWindowProperty(NDX_Tools->display, _wid, NDX_Tools->_NET_WM_ALLOWED_ACTIONS, 0L, sizeof (Atom), False,
+									XA_ATOM, &da, &di, &dl, &dl, &prop_ret);
+
+	if (status == Success && prop_ret)
+	{
+		int total = sizeof(prop_ret);
+		for (int i = 0; i < total; i++) {
+			prop = ((Atom *)prop_ret)[i];
+			atoms.push_back(prop);
+		}
+	}
+	return atoms;
 }
