@@ -38,13 +38,13 @@ function WM_GetWindows(){
 		win.type = ndx.GetWindowType(windows[i]);
 		win.state = ndx.GetWindowState(windows[i]);
 		win.allowed = ndx.GetWindowAllowedActions(windows[i]);
-		win.icon_data = ndx.GetWindowIcon(windows[i]);
+		//win.icon_data = ndx.GetWindowIcon(windows[i]);
 
-		if(win.icon_data.width != 0 && win.icon_data.height != 0){
+		/*if(win.icon_data.width != 0 && win.icon_data.height != 0){
 			var myImageData = ctx.createImageData(win.icon_data.width, win.icon_data.height);
 			myImageData.data.set(win.icon_data.data);
 			win.icon = GenerateImage(win.icon_data.width, win.icon_data.height,myImageData);
-		}
+		}*/
 		wm_windows[wm_windows.length] = win;
 	}
 }
@@ -78,8 +78,8 @@ window.addEventListener('load',function(){
 	/**/
 	setInterval(function(){
 		WM_GetWindows();
-		ShowWindowsList(GetNormalWindows());
-	},1500)
+		//ShowWindowsList(GetNormalWindows());
+	},100)
 	/**/
 	//WM_GetWindows();
 })

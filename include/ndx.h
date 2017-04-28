@@ -15,7 +15,10 @@ public:
 	std::vector <std::string> GetWindowState(Window _wid);
 	std::vector <std::string> GetWindowAllowedActions(Window _wid);
 	Icon GetWindowIcon(Window _wid);
+	std::string GetWindowIconName(Window _wid);
 	std::vector <Atom> NetSupported(Window _wid);
+	unsigned long GetWindowPid(Window _wid);
+	unsigned long GetWindowDesktop(Window _wid);
 private:
 	NDXTools * NDX_Tools;
 };

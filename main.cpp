@@ -11,6 +11,8 @@ int main()
 	windows = ndx->GetWindowsInRoot();
 	for(int i = 0; i < windows.size() ;i++){
 		std::cout << ndx->GetWindowTitle((Window)windows[i])<<std::endl;
+		std::cout << ndx->GetWindowPid((Window)windows[i])<<std::endl;
+		std::cout << ndx->GetWindowDesktop((Window)windows[i])<<std::endl;
 		std::cout << ndx->GetWindowType((Window)windows[i])<<std::endl;
 		states = ndx->GetWindowState((Window)windows[i]);
 		for (int i = 0; i < states.size(); i++) {

@@ -276,3 +276,64 @@ std::vector <Atom> NDX::NetSupported(Window _wid){
 	}
 	return atoms;
 }
+
+
+std::string NDX::GetWindowIconName(Window _wid){
+
+	std::string name = "";
+	//first try the modern net-wm ones
+	unsigned long length;
+	unsigned char *data = NULL;
+	Atom utf8Atom = NDX_Tools->atom("UTF8_STRING");
+
+	if (NDX_Tools->getWindowProperty(_wid, NDX_Tools->atom("_NET_WM_VISIBLE_ICON_NAME"), utf8Atom, &length, &data))
+	{
+		if(data != NULL){
+			name.assign((char*)data);
+		}
+		XFree(data);
+
+	}
+
+	if (name.empty())
+	{
+		if (NDX_Tools->getWindowProperty(_wid, NDX_Tools->atom("_NET_WM_ICON_NAME"), utf8Atom, &length, &data))
+		{
+			if(data != NULL){
+				name.assign((char*)data);
+			}
+			XFree(data);
+		}
+	}
+
+return name;
+}
+
+unsigned long NDX::GetWindowPid(Window _wid){
+	unsigned long length;
+	unsigned char *data = NULL;
+	unsigned long pid;
+	if (NDX_Tools->getWindowProperty(_wid, NDX_Tools->atom("_NET_WM_PID"), XA_CARDINAL, &length, &data))
+	{
+		if(data != NULL){
+			pid = *(unsigned long*)data;
+		}
+		XFree(data);
+	}
+	return pid;
+}
+
+unsigned long NDX::GetWindowDesktop(Window _wid){
+	unsigned long length;
+	unsigned char *data = NULL;
+	unsigned long pid;
+	if (NDX_Tools->getWindowProperty(_wid, NDX_Tools->atom("_NET_WM_DESKTOP"), XA_CARDINAL, &length, &data))
+	{
+		if(data != NULL){
+			pid = *(unsigned long*)data;
+		}
+		XFree(data);
+	}
+	return pid;
+}
+
